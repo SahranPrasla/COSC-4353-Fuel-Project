@@ -10,6 +10,7 @@
     <!-- Login component -->
     <div class="container">
         <div class="form">
+            <h2>Sign in</h2>
             <form onsubmit="return validateForm()" action="ProfileManagement.html">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -21,20 +22,11 @@
 
                 <br>
             </form>
-            <br>
-            <!-- Client registration component -->
-            <form onsubmit="return validateNewForm()" action="ProfileManagement.html">
-                <label for="new-username">New username:</label>
-                <input type="text" id="new-username" name="new-username" required>
-
-                <label for="new-password">New password:</label>
-                <input type="password" id="new-password" name="new-password" required>
-
-                <input type="submit" value='Register'></a>
-            </form>
-        </div>
-    </div>
-
+            <p class="small-xl pt-3 text-center">
+                <span class="text-muted">Not a member?</span>
+                <a href="/SignUp.html">Sign up</a>
+            </p>
+    
             <script>
                 function validateForm() {
                     var username = document.forms[0]["username"].value;
@@ -46,17 +38,8 @@
                     return true;
                 }
 
-                function validateNewForm() {
-                    var newUsername = document.forms[0]["new-username"].value;
-                    var newPassword = document.forms[0]["new-password"].value;
-                    if (newUsername == "" || newPassword == "") {
-                        alert("Please fill out all fields.");
-                        return false;
-                    }
-                    return true;
-                }
             </script>
-
+        </div>
+    </div>
 </body>
-
 </html>
