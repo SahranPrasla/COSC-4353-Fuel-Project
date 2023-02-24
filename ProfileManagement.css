@@ -36,7 +36,7 @@ h2 {
 input[type="text"] {
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px solid #4CAF50;
     background-color: #f2f2f2;
     top: 50%;
@@ -72,16 +72,6 @@ button[type="submit"] {
 }
 
 
-input[type="submit"] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: #fff;
-    cursor: pointer;
-    width: 300px;
-}
-
 input[type="button"] {
     padding: 10px;
     border: none;
@@ -115,7 +105,7 @@ label.state {
 select.stateSelection {
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px solid #4CAF50;
     background-color: #f2f2f2;
     top: 50%;
@@ -127,7 +117,16 @@ label {
     margin-bottom: 10px;
 }
 
-.info{
+.info {
     padding-top: 5px;
     padding-left: 15px;
+}
+
+
+button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+input[type="button"]:hover {
+    background-color: #3e8e41;
 }
