@@ -8,6 +8,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 #container {
   display: flex;
   justify-content: center;
@@ -33,16 +38,34 @@ form {
 
 #container form div label {
   font-size: medium;
-  font-weight: 500;
+  font-weight: bold;
   display: block;
   padding-bottom: 5px;
 }
 
+#total {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+#total div label{
+  font-weight: bolder;
+  font-size: 400%;
+  text-align: center;
+}
+
+#total div input {
+  width: 350px;
+  border: 2px solid;
+  border-color: #4CAF50;
+}
+
 input{
   padding: 10px;
-  margin-bottom: 20px;
   border-radius: 5px;
   width: 250px;
+  height: 45px;
   border: none;
   background-color: rgb(243, 240, 240);
 }
