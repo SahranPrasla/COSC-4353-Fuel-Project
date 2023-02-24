@@ -8,18 +8,126 @@ body {
     margin: 0;
 }
 
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
 
 .form {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    
+    padding: 20px;
     margin: 20px;
     border-radius: 5px;
+    width: 400px;
+    height: 550px;
+    top: 20%;
+    left: 20%;
 }
 
-form.main{
-    background-color: green;
-    padding: 20px;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: 2px solid #4CAF50;
+    background-color: #f2f2f2;
+    top: 50%;
+    left: 50%;
+
+}
+
+form.main {
+    background-color: #f2f2f2;
+    padding: 50px;
     margin: 0 auto;
     width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+
+button[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    width: 300px;
+
+}
+
+
+input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    width: 300px;
+}
+
+input[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    width: 300px;
+}
+
+.saveProfile {
+    padding: 10px;
+}
+
+.gallonForm {
+    padding: 10px;
+}
+
+label.city {
+    padding-right: 47px;
+}
+
+label.zipcode {
+    padding-right: 17px;
+}
+
+label.state {
+    padding-right: 38px;
+}
+
+select.stateSelection {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    border: 2px solid #4CAF50;
+    background-color: #f2f2f2;
+    top: 50%;
+    left: 50%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info{
+    padding-top: 5px;
+    padding-left: 15px;
 }
