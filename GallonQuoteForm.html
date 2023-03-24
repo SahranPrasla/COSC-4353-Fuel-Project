@@ -16,7 +16,7 @@
     </nav>
 
     <div id="container">
-        <form>
+        <form method="POST" onsubmit="validateForm()" action="/gallonquote">
             <h1>Gallon Quote Form</h1>
             <div class="groups">
                 <div>
@@ -47,6 +47,16 @@
             <button type="submit">Submit Order</button>
         </form>
     </div>
+    <script>
+        function validateForm() {
+            if (document.forms[0]["gallons-requested"].value == "" || document.forms[0]["delivery-date"].value == "") {
+                alert("Please fill out all fields.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script src="./gallonQuoteFormServer.js"></script>
 </body>
 
 </html>
