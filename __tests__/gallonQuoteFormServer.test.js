@@ -6,7 +6,7 @@ describe('Gallon Quote Form', () => {
     const res = await request(app)
       .post('/gallonquote')
       .send({ requestedGallons: 1000 });
-    expect(200);
+    expect(res.statusCode).toBe(200);
     expect(res.text).toMatch('Requested Gallons: 1000');
   });
 
@@ -14,7 +14,7 @@ describe('Gallon Quote Form', () => {
     const res = await request(app)
       .post('/gallonquote')
       .send({ requestedGallons: -77 });
-    expect(401);
+    expect(res.statusCode).toBe(401);
     expect(res.text).toMatch('Invalid Request!');
     });
 });
