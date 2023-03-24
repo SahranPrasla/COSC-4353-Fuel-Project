@@ -6,7 +6,7 @@ const app = express();
 // Use middleware to parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve login form
+
 app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/loginPage.html');
 });
