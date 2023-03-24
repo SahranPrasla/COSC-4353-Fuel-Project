@@ -11,9 +11,10 @@ app.get('/fuelquote', (req, res) => {
 
 // Create a POST route
 app.post('/fuelquote', (req, res) => {
-    const { recievedGallons} = req.body;
-    if (recievedGallons === 1000) {
-      res.status(200).send('Recived Gallons: 1000');
+    const { recievedGallons, address, price, profit,} = req.body;
+    if (recievedGallons == 1000 && address == '123 Address Ln' 
+    && price == 10000 && profit == 20000) {
+      res.status(200).send('Recived Information');
     } else {
       res.status(401).send('Incorrect Request!');
     }
