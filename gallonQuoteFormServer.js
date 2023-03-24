@@ -18,8 +18,8 @@ app.post('/gallonquote', (req, res) => {
   }
 });
 
-const server = app.listen(3000, () => {
-  console.log('Server started on port 3000');
+const server = app.listen(2500, () => {
+  console.log('Server started on port 2500');
 });
 
 module.exports = server;
