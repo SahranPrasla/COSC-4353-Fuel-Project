@@ -11,7 +11,7 @@
     <div class="container">
         <div class="form">
             <h2>Sign in</h2>
-            <form method ="POST" action="/login" action="GallonQuoteForm.html" >
+            <form method ="POST" onsubmit="return validateForm()" action="/login" action="GallonQuoteForm.html" >
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
 
@@ -26,7 +26,17 @@
                 <span class="text-muted">Not a member?</span>
                 <a href="SignUp.html">Sign up</a>
             </p>
-    
+            <script>
+                function validateForm() {
+                    var username = document.forms[0]["username"].value;
+                    var password = document.forms[0]["password"].value;
+                    if (username == "" || password == "") {
+                        alert("Please fill out all fields.");
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
             <script src="./loginPageServer.js"></script>
         </div>
     </div>
