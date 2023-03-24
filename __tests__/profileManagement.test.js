@@ -7,7 +7,7 @@ describe('Profile Management', () => {
         .post('/saveProfile')
         .send({ fullName: 'KabeerAli', address1: '786 Haye Dr', address2: 'N/A', city: 'Houston',
      state: 'TX', zipcode: '77564' });
-    expect(200);
+     expect(res.statusCode).toBe(200);;
     expect(res.text).toMatch('Profile successful!');
   });
   
@@ -16,7 +16,7 @@ describe('Profile Management', () => {
         .post('/saveProfile')
         .send({ fullName: 'KabeerAli2', address1: '786 Haye D2r', address2: 'N/2A', city: 'Hous2ton',
     state: 'T2X', zipcode: '772564' });
-    expect(401);
+    expect(res.statusCode).toBe(401);;
     expect(res.text).toMatch('Invalid Profile');
   });
 
@@ -25,7 +25,7 @@ describe('Profile Management', () => {
         .post('/saveProfile')
         .send({ fullName: 'KabeerAli2', address1: '786 Haye D2r', address2: 'N/2A', city: 'Hous2ton',
     state: 'T2X'});
-    expect(401);
+    expect(res.statusCode).toBe(401);;
     expect(res.text).toMatch('Invalid Profile');
   });
 
