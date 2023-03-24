@@ -14,12 +14,12 @@
     </nav>
 
     <div class="container">
-        <form class="main">
+        <form class="main" method ="POST" action="/saveProfile">
             <div class="form">
                 <h2>Client Profile Management</h2>
                 <div class="info">
-                    <label for="full-name">Full Name:</label>
-                    <input type="text" id="full-name" name="full-name" maxlength="50" required>
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" maxlength="50" required>
                     <br>
                     <label for="address1">Address 1:</label>
                     <input type="text" id="address1" name="address1" maxlength="100" required>
@@ -102,7 +102,7 @@
             </div>
         </form>
     </div>
-
+    <script src="./profileManagementServer.js"></script>
 
 
 
