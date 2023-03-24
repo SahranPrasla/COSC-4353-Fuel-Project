@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../gallonQuoteFormServer.js');
 
-describe('Gallon Quote Form', () => {
+describe('Testing validity of requestedGallons', () => {
   it('should return requestedGallons', async () => {
     const res = await request(app)
       .post('/gallonquote')
