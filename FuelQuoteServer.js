@@ -1,0 +1,27 @@
+const express = require('express');
+//const bodyParser = require('body-parser');
+
+const app = express();
+app.use(express.json());
+
+// Create a GET route
+app.get('/fuelquote', (req, res) => {
+    res.sendFile(__dirname + '/FuelQuoteHistory.html');
+});
+
+// Create a POST route
+app.post('/fuelquote', (req, res) => {
+    const { recievedGallons} = req.body;
+    if (recievedGallons === 1000) {
+      res.status(200).send('Recived Gallons: 1000');
+    } else {
+      res.status(401).send('Incorrect Request!');
+    }
+});
+
+// Connect (Listen) to the server
+const server = app.listen(6000, () => {
+    console.log('Server started on port 6000');
+});
+
+module.exports = server;
