@@ -1,20 +1,20 @@
 const request = require('supertest');
 const app = require('../loginPageServer.js');
 
-describe('POST /login', () => {
-  test('returns 200 OK and "Login successful!" message when given correct credentials', async () => {
-    const response = await request(app)
-    .post('/login')
+describe('POST /GallonQuoteForm.html', () => {
+  it('returns 200 OK and "Login successful!" message when given correct credentials', async () => {
+    const res = await request(app)
+    .post('/GallonQuoteForm.html')
     .send({ username: 'myusername', password: 'mypassword' });
-    expect(200);
-    expect('Login successful!');
+    expect(res.statusCode).toBe(200);
+    expect(res.text).toMatch('Login successful!');
   });
 
-  test('returns 401 Unauthorized when given incorrect credentials', async () => {
-    const response = await request(app)
-    .post('/login')
+  it('returns 401 Unauthorized when given incorrect credentials', async () => {
+    const res = await request(app)
+    .post('/GallonQuoteForm.html')
     .send({ username: 'invalidusername', password: 'invalidpassword' });
-    expect(401);
-    expect('Invalid username or password');
+    expect(res.statusCode).toBe(401);
+    expect(res.text).toMatch('Invalid username or password');
   });
 });

@@ -4,15 +4,14 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Use middleware to parse incoming request bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-
-app.get('/login', (req, res) => {
+app.get('/GallonQuoteForm.html', (req, res) => {
   res.sendFile(__dirname + '/loginPage.html');
 });
 
 // Route for handling login requests
-app.post('/login', (req, res) => {
+app.post('/GallonQuoteForm.html', (req, res) => {
   const { username, password } = req.body;
   if (username === 'myusername' && password === 'mypassword') {
     res.status(200).send('Login successful!');
