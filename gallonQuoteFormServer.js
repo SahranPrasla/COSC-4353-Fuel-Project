@@ -4,10 +4,6 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/FuelQuoteHistory.html', (req, res) => {
-  res.sendFile(__dirname + '/GallonQuoteForm.html');
-});
-
 
 app.post('/FuelQuoteHistory.html', (req, res) => {
   var { requestedGallons, deliveryDate} = req.body;

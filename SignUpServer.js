@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.get('/signup', (req, res) => {
-  res.sendFile(__dirname + '/SignUp.html');
-});
 
 // Route for handling sign up requests
 app.post('/signup', (req, res) => {

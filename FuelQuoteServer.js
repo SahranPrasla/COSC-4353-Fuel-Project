@@ -4,11 +4,6 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Create a GET route
-app.get('/fuelquote', (req, res) => {
-    res.sendFile(__dirname + '/FuelQuoteHistory.html');
-});
-
 // Create a POST route
 app.post('/fuelquote', (req, res) => {
     const { recievedGallons, address, price, profit,} = req.body;

@@ -1,15 +1,10 @@
 const express = require('express');
-
+const path = require('path');
 
 const app = express();
 
 // Use middleware to parse incoming request bodies
 app.use(express.json());
-
-// Serve login form
-app.get('/saveProfile', (req, res) => {
-  res.sendFile(__dirname + '/ProfileManagement.html');
-});
 
 // Route for handling login requests
 app.post('/saveProfile', (req, res) => {

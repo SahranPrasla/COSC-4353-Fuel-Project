@@ -6,10 +6,6 @@ const app = express();
 // Use middleware to parse incoming request bodies
 app.use(express.json());
 
-app.get('/GallonQuoteForm.html', (req, res) => {
-  res.sendFile(__dirname + '/loginPage.html');
-});
-
 // Route for handling login requests
 app.post('/GallonQuoteForm.html', (req, res) => {
   const { username, password } = req.body;
