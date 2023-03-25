@@ -17,12 +17,12 @@
 
     <div id="container">
         
-        <form method="POST" onsubmit="validateForm()" action="FuelQuoteHistory.html">
+        <form method="POST" onsubmit="return validateForm()" action="FuelQuoteHistory.html">
             <h1>Gallon Quote Form</h1>
             <div class="groups">
                 <div>
                     <label for="gallons-requested">Gallons requested:</label>
-                    <input type="number" id="gallons-requested" name="gallons-requested" min="0" required>
+                    <input type="number" id="gallons-requested" name="gallons-requested" min="1" required>
                 </div>
                 <div>
                     <label for="suggested-price">Suggested price / gallon:</label>
@@ -52,6 +52,9 @@
         function validateForm() {
             if (document.forms[0]["gallons-requested"].value == "" || document.forms[0]["delivery-date"].value == "") {
                 alert("Please fill out all fields.");
+                return false;
+            }else if(document.forms[0]["delivery-date"].value < new Date().toISOString().split('T')[0]){
+                alert("Please select a valid date.");
                 return false;
             }
             return true;
