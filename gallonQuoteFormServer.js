@@ -10,11 +10,13 @@ app.get('/FuelQuoteHistory.html', (req, res) => {
 
 
 app.post('/FuelQuoteHistory.html', (req, res) => {
-  var { requestedGallons} = req.body;
-  if (requestedGallons > 0) {
-    res.status(200).send('Requested Gallons: ' + requestedGallons);
+  var { requestedGallons, deliveryDate} = req.body;
+  if (!requestedGallons || !deliveryDate) {
+    res.status(401).send('Please enter a value for requested gallons and delivery date!');
+  } else if (requestedGallons <= 0 || deliveryDate < new Date().toISOString().split('T')[0]){
+    res.status(401).send('One or more entries is invalid!');
   } else{
-    res.status(401).send('Invalid Request!');
+    res.status(200).send('Request Recieved!');
   }
 });
 
