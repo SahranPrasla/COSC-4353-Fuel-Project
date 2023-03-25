@@ -37,7 +37,7 @@ describe('Fuel Quote Form', () => {
     it('Get GallonRequest --> 401 !Match', async () => {
         const res = await request(app)
        .post('/fuelquote')
-       .send({ recievedGallons: 1000, address: '123 Address Ln',
+       .send({ recievedGallons: 1001, address: '123 Address Ln',
        price: 10000, profit: 20000 });
        expect(res.statusCode).toBe(401);
        expect(res.text).toMatch('Incorrect Request!');
