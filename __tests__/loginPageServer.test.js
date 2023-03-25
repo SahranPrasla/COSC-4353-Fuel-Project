@@ -7,6 +7,7 @@ describe('POST /GallonQuoteForm.html', () => {
     .post('/GallonQuoteForm.html')
     .send({ username: 'myusername', password: 'mypassword' });
     expect(res.statusCode).toBe(200);
+    expect(typeof(res.text)).toBe("string");
     expect(res.text).toMatch('Login successful!');
   });
 
@@ -15,6 +16,7 @@ describe('POST /GallonQuoteForm.html', () => {
     .post('/GallonQuoteForm.html')
     .send({ username: 'invalidusername', password: 'invalidpassword' });
     expect(res.statusCode).toBe(401);
+    expect(typeof(res.text)).toBe("string");
     expect(res.text).toMatch('Invalid username or password');
   });
 });
