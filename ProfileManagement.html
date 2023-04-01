@@ -11,7 +11,14 @@
             <li><a href="GallonQuoteForm.html">Gallon Quote Form</a></li>
             <li><a href="FuelQuoteHistory.html">Fuel Quote History</a></li>
         </ul>
-        <img src="images/clientimg.png" class="user-pic">
+        <!--<img src="images/clientimg.png" class="user-pic">--->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"></button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="logout" ><img src="images/clientimg.png" class="user-pic"><div class="logO">Logout</div></a>
+              
+            </div>
+          </div>
     </nav>
 
     <div class="container">
@@ -104,7 +111,27 @@
         </form>
     </div>
     <script src="./profileManagementServer.js"></script>
-
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+        </script>
 
 
 </body>
