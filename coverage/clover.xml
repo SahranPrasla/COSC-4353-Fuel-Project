@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679713050469" clover="3.2.0">
-  <project timestamp="1679713050469" name="All files">
+<coverage generated="1679713131337" clover="3.2.0">
+  <project timestamp="1679713131337" name="All files">
     <metrics statements="62" coveredstatements="62" conditionals="32" coveredconditionals="32" methods="10" coveredmethods="10" elements="104" coveredelements="104" complexity="0" loc="62" ncloc="62" packages="1" files="5" classes="5"/>
-    <file name="FuelQuoteServer.js" path="/Users/kabeerali/Documents/GitHub/COSC-4353-Fuel-Project/FuelQuoteServer.js">
+    <file name="FuelQuoteServer.js" path="C:\Users\Maknojia\Documents\GitHub\COSC-4353-Fuel-Project\FuelQuoteServer.js">
       <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -16,7 +16,7 @@
       <line num="20" count="1" type="stmt"/>
       <line num="23" count="1" type="stmt"/>
     </file>
-    <file name="SignUpServer.js" path="/Users/kabeerali/Documents/GitHub/COSC-4353-Fuel-Project/SignUpServer.js">
+    <file name="SignUpServer.js" path="C:\Users\Maknojia\Documents\GitHub\COSC-4353-Fuel-Project\SignUpServer.js">
       <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
@@ -33,7 +33,7 @@
       <line num="23" count="1" type="stmt"/>
       <line num="26" count="1" type="stmt"/>
     </file>
-    <file name="gallonQuoteFormServer.js" path="/Users/kabeerali/Documents/GitHub/COSC-4353-Fuel-Project/gallonQuoteFormServer.js">
+    <file name="gallonQuoteFormServer.js" path="C:\Users\Maknojia\Documents\GitHub\COSC-4353-Fuel-Project\gallonQuoteFormServer.js">
       <metrics statements="13" coveredstatements="13" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -49,7 +49,7 @@
       <line num="20" count="1" type="stmt"/>
       <line num="23" count="1" type="stmt"/>
     </file>
-    <file name="loginPageServer.js" path="/Users/kabeerali/Documents/GitHub/COSC-4353-Fuel-Project/loginPageServer.js">
+    <file name="loginPageServer.js" path="C:\Users\Maknojia\Documents\GitHub\COSC-4353-Fuel-Project\loginPageServer.js">
       <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
@@ -64,7 +64,7 @@
       <line num="21" count="1" type="stmt"/>
       <line num="24" count="1" type="stmt"/>
     </file>
-    <file name="profileManagementServer.js" path="/Users/kabeerali/Documents/GitHub/COSC-4353-Fuel-Project/profileManagementServer.js">
+    <file name="profileManagementServer.js" path="C:\Users\Maknojia\Documents\GitHub\COSC-4353-Fuel-Project\profileManagementServer.js">
       <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
