@@ -5,7 +5,7 @@ const client = require('./database.js');
 app.use(express.json());
 
 // Route for handling sign up requests
-app.post('/signup', (req, res) => {
+app.post('/SignUpServer.js', (req, res) => {
   var { username, password} = req.body;
   // Do validation on the input data
   console.log(username);
