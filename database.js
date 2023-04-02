@@ -7,11 +7,11 @@ client.connect(function(err) {
     if(err) {
       return console.error('could not connect to postgres', err);
     }
-    client.query('SELECT * from usercredentials', function(err, result) {
+    client.query('SELECT * from UserCredentials;', function(err, result) {
       if(err) {
         return console.error('error running query', err);
       }
-      console.log(result.rows[0].theTime);
+      console.log(result.rows[0]);
         client.end();
     });
     
