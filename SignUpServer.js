@@ -9,13 +9,13 @@ app.post('/signup', (req, res) => {
   var { username, password} = req.body;
   // Do validation on the input data
   if (!username || !password ) {
-    console.log('success31');
+    console.log('success31'); //REMOVE
     res.status(400).send('All fields are required');
   } else if (password.length < 6) {
-    console.log('success2');
+    console.log('success2'); //REMOVE
     res.status(400).send('Password must be at least 6 characters long');
   } else {
-    console.log('success3');
+    console.log('success3'); //REMOVE
     
     client.connect(function(err) {
       if(err) {
