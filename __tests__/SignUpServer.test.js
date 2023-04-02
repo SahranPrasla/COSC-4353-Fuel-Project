@@ -4,7 +4,7 @@ const app = require('../SignUpServer.js');
 describe('Sign Up', () => {
   it('should return an error if any required fields are missing', async () => {
     const res = await request(app)
-      .post('/SignUpServer.js')
+      .post('/signup')
       .send({
         //testing using missing/empty password field
         username: 'testuser'
@@ -17,7 +17,7 @@ describe('Sign Up', () => {
 
   it('should return an error if the password is too short', async () => {
     const res = await request(app)
-      .post('/SignUpServer.js')
+      .post('/signup')
       .send({
         //testing using password field with less than 6 characters
         username: 'testuser',
@@ -31,7 +31,7 @@ describe('Sign Up', () => {
 
   it('should return a success message if sign up is successful', async () => {
     const res = await request(app)
-      .post('/SignUpServer.js')
+      .post('/signup')
       .send({
         //testing using all nomral expected fields
         username: 'testuser',
