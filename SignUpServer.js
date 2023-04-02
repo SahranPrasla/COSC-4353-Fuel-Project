@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const client = require('./database.js');
 
 app.use(express.json());
 
@@ -13,7 +14,19 @@ app.post('/signup', (req, res) => {
   } else if (password.length < 6) {
     res.status(400).send('Password must be at least 6 characters long');
   } else {
-    
+    client.connect(function(err) {
+      if(err) {
+        return console.error('could not connect to postgres', err);
+      }
+      client.query('INSERT INTO UserCredentials(username, password) VALUES(?,?);'[username, password], function(err, result) {
+        if(err) {
+          return console.error('error running query', err);
+        }
+        console.log(result.rows);
+          client.end();
+      });
+      
+    });
     res.status(200).send('Sign up successful!');
   }
 });
