@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const client = require('./database.js');
 const app = express();
 
 // Use middleware to parse incoming request bodies
@@ -9,11 +9,22 @@ app.use(express.json());
 // Route for handling login requests
 app.post('/saveProfile', (req, res) => {
   const { fullName, address1, address2, city, state, zipcode } = req.body;
-  if (fullName == 'KabeerAli' && address1 == '786 Haye Dr' && address2 == 'N/A' && city == 'Houston' 
-  && state == 'TX' && zipcode == '77564') {
-    res.status(200).send('Profile successful!');
-  } else {
+  if (!fullName || !address1 || !city || !state || !zipcode || zipcode.length() < 5) {
     res.status(401).send('Invalid Profile');
+  } else {
+    client.connect(function(err) {
+      if(err) {
+        return console.error('could not connect to postgres', err);
+      }   
+      client.query("INSERT INTO ClientInformation(username, fullName, addressOne, addressTwo, city, state, zipcode) VALUES(kb123, '"+fullName+"','"+address1+"','"+address2+"','"+city+"','"+state+"',,'"+zipcode+"');", function(err, result) {
+        if(err) {
+          return console.error('error running query', err);
+        }
+        //console.log(result.rows);
+          client.end();
+      });
+  });
+    res.status(200).send('Valid Profile');
   }
 });
 
