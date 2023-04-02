@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../profileManagementServer.js');
-const path = require('path');
+
 
 
 describe('Profile Management', () => {
