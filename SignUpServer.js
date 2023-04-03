@@ -3,6 +3,7 @@ const app = express();
 const client = require('./database.js');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Route for handling sign up requests
 app.post('/signup', (req, res) => {
@@ -36,8 +37,8 @@ app.post('/signup', (req, res) => {
 });
 
 // Start the server on port 1000
-const server = app.listen(1000, () => {
-  console.log('Server started on port 1000');
+const server = app.listen(5500, () => {
+  console.log('Server started on port 5500');
 });
 
 module.exports = server;

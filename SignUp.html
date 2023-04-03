@@ -12,12 +12,12 @@
         <div class="form">
             <h2>Create Account</h2>
             <!-- Client registration component -->
-            <form onsubmit="return validateNewForm()" method="post" action="signup">
-                <label for="new-username">New username:</label>
-                <input type="text" id="new-username" name="new-username" required>
+            <form onsubmit="return validateNewForm()" method="post" action="/signup">
+                <label for="username">New username:</label>
+                <input type="text" id="username" name="username" required>
 
-                <label for="new-password">New password:</label>
-                <input type="password" id="new-password" name="new-password" required>
+                <label for="password">New password:</label>
+                <input type="password" id="password" name="password" required>
 
                 <input type="submit" value='Register'></a>
 
@@ -30,8 +30,8 @@
             <script>
 
                 function validateNewForm() {
-                    var newUsername = document.forms[0]["new-username"].value;
-                    var newPassword = document.forms[0]["new-password"].value;
+                    var newUsername = document.forms[0]["username"].value;
+                    var newPassword = document.forms[0]["password"].value;
                     if (newUsername == "" || newPassword == "") {
                         alert("Please fill out all fields.");
                         return false;
@@ -39,7 +39,7 @@
                     return true;
                 }
             </script>
-            <script src="SignUpServer.js"></script>
+            <!--<script src="SignUpServer.js"></script>-->
         </div>
     </div>
 </body>
