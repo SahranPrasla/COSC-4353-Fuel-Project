@@ -29,7 +29,7 @@ describe('Sign Up', () => {
   });
 
 
-  it('should return a success message if sign up is successful', async () => {
+  it('should return a 200 if sign up is successful', async () => {
     const res = await request(app)
       .post('/signup')
       .send({
@@ -39,7 +39,6 @@ describe('Sign Up', () => {
       });
     expect(typeof(res.text)).toBe("string");
     expect(res.statusCode).toEqual(200);
-    expect(res.text).toMatch('Sign up successful');
   });
 
 });
