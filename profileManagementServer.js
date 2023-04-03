@@ -1,13 +1,20 @@
 const express = require('express');
-const client = require('./database.js');
 const app = express();
+const path = require('path')
+const client = require('./database.js');
 
-// Use middleware to parse incoming request bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Route for handling login requests
-app.post('/saveProfile', (req, res) => {
-  const { fullName, address1, address2, city, state, zipcode } = req.body;
+app.route('/saveProfile')
+.get((req,res) => {
+  res.sendFile(path.join(__dirname+'/public/ProfileManagement.html'));
+})
+
+.post(async(req, res) => {
+  var { fullName, address1, address2, city, state, zipcode } = req.body;
   if (!fullName || !address1 || !city || !state || !zipcode || zipcode.length < 5) {
     res.status(401).send('Invalid Profile');
   } else {
@@ -23,7 +30,7 @@ app.post('/saveProfile', (req, res) => {
           client.end();
       });
   });
-    res.status(200).send('Valid Profile');
+    res.status(200).sendFile(path.join(__dirname+'/public/GallonQuoteForm.html'));
   }
 });
 

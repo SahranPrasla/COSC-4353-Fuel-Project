@@ -25,6 +25,7 @@ app.route('/login')
        console.log("Invalid username or password");
       }
       else if (username == result.rows[0].username && password == result.rows[0].password) {
+        localStorage.setItem("user", "test");
         res.status(200).sendFile(path.join(__dirname+'/public/GallonQuoteForm.html'));
       }
       else if(err) {

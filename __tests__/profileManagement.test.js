@@ -4,13 +4,12 @@ const app = require('../profileManagementServer.js');
 
 
 describe('Profile Management', () => {
-  it('returns 200 OK and "Profile successful!" message when given correct credentials', async () => {
+  it('returns 200 when given correct credentials', async () => {
     const res = await request(app)
         .post('/saveProfile')
         .send({ fullName: 'KabeerAli', address1: '786 Haye Dr', address2: 'N/A', city: 'Houston',
      state: 'TX', zipcode: '77564' });
      expect(res.statusCode).toBe(200);
-    expect(res.text).toMatch('Valid Profile');
   });
   
   it('returns 401 if profile is not created', async () => {
