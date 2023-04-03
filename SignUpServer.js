@@ -1,12 +1,18 @@
 const express = require('express');
 const app = express();
+const path = require('path')
 const client = require('./database.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Route for handling sign up requests
-app.post('/signup', (req, res) => {
+app.route('/signup')
+.get((req,res) => {
+  res.sendFile(path.join(__dirname+'/public/SignUp.html'));
+})
+.post((req, res) => {
   var { username, password} = req.body;
   // Do validation on the input data
   if (!username || !password ) {
@@ -31,8 +37,7 @@ app.post('/signup', (req, res) => {
       });
       
     });
-    
-    res.status(200).send('Sign up successful!');
+    res.status(200).sendFile(path.join(__dirname+'/public/ProfileManagement.html'));
   }
 });
 
