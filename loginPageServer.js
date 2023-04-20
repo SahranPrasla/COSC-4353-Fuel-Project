@@ -19,7 +19,7 @@ app.route('/login')
     if(err) {
       return console.error('could not connect to postgres', err);
     }
-    client.query("SELECT * FROM UserCredentials WHERE username ='"+username+"';", function(err, result) {
+    client.query("SELECT * FROM UserCredentials WHERE username ='"+username+"' AND password = crypt('"+password+"', password);", function(err, result) {
       if(result.rowCount == 0) {
         res.sendFile(path.join(__dirname+'/public/loginPage.html'));
        console.log("Invalid username or password");
