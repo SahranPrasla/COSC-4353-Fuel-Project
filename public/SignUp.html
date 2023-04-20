@@ -12,7 +12,7 @@
         <div class="form">
             <h2>Create Account</h2>
             <!-- Client registration component -->
-            <form onsubmit="return validateNewForm()" method="post" action="/signup">
+            <form onsubmit="validateNewForm()" method="post" action="/signup">
                 <label for="username">New username:</label>
                 <input type="text" id="username" name="username" required>
 
@@ -32,11 +32,14 @@
                 function validateNewForm() {
                     var newUsername = document.forms[0]["username"].value;
                     var newPassword = document.forms[0]["password"].value;
+                    
                     if (newUsername == "" || newPassword == "") {
                         alert("Please fill out all fields.");
                         return false;
                     }
+                    localStorage.setItem('Username', newUsername);
                     return true;
+                   
                 }
                 
             </script>

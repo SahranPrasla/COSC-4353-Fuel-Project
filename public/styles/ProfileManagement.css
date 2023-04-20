@@ -61,7 +61,7 @@ form.main {
 }
 
 
-button[type="submit"] {
+button[type="button"] {
     padding: 10px;
     border: none;
     border-radius: 5px;

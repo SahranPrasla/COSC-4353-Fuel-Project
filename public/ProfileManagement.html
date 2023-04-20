@@ -100,7 +100,7 @@
                     <input type="text" id="zipcode" name="zipcode" minlength="5" maxlength="9" required>
                 </div>
                 <div class="saveProfile">
-                    <button type="submit">Save profile</button>
+                    <button type="button" onclick="submitProfileForm()">Save profile</button>
 
                 </div>
                 <div class="gallonForm">
@@ -110,7 +110,30 @@
             </div>
         </form>
     </div>
-    <script src="./profileManagementServer.js"></script>
+    <script src="/__tests__/profileManagement.test.js"></script>
+
+    <script>
+      function submitProfileForm() {
+      var fullName = document.getElementById("fullName").value;
+      var address1 = document.getElementById("address1").value;
+      var address2 = document.getElementById("address2").value;
+      var city = document.getElementById("city").value;
+      var state = document.getElementById("state").value;
+      var zipcode = document.getElementById("zipcode").value;
+      // console.log("Full name: " + fullName);
+      // console.log("Address 1: " + address1);
+      // console.log("Address 2: " + address2);
+      // console.log("City: " + city);
+      // console.log("State: " + state);
+      // console.log("Zipcode: " + zipcode);
+      localStorage.setItem('Full name', fullName);
+      }
+    </script>
+
+
+
+
+
     <script>
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
