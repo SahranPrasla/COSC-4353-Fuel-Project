@@ -45,6 +45,7 @@
                     <input type="number" id="total-amount-due" name="total-amount-due" readonly>
                 </div>
             </div>
+            <button onsubmit="getQuote()" type="submit">Get Quote</button>
             <button type="submit">Submit Order</button>
         </form>
     </div>
@@ -58,7 +59,7 @@
                 return false;
             }
             return true;
-        }
+        }  
     </script>
     <script src="./gallonQuoteFormServer.js"></script>
 </body>
