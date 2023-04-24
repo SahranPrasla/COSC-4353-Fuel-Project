@@ -22,34 +22,52 @@
             <div class="groups">
                 <div>
                     <label for="gallons-requested">Gallons requested:</label>
-                    <input type="number" id="gallons-requested" name="gallons-requested" min="1" required>
+                    <input type="number" id="gallons-requested" name="gallons-requested" min="1" onkeyup="checkInputs()" required>
                 </div>
                 <div>
                     <label for="suggested-price">Suggested price / gallon:</label>
-                    <input type="number" id="suggested-price" name="suggested-price" readonly>
+                    <input type="number" id="suggested-price" name="suggested-price" onkeyup="checkInputs()" readonly>
                 </div>
             </div>
             <div class="groups">
                 <div>
                     <label for="delivery-address">Delivery address:</label>
-                    <input type="text" id="delivery-address" name="delivery-address" readonly>
+                    <input type="text" id="delivery-address" name="delivery-address" onkeyup="checkInputs()" readonly>
                 </div>
                 <div>
                     <label for="delivery-date">Delivery date:</label>
-                    <input type="date" id="delivery-date" name="delivery-date" required>
+                    <input type="date" id="delivery-date" name="delivery-date" onkeyup="checkInputs()" required>
                 </div>
             </div>
             <div id="total">
                 <div>
                     <label for="total-amount-due">Total amount due:</label>
-                    <input type="number" id="total-amount-due" name="total-amount-due" readonly>
+                    <input type="number" id="total-amount-due" name="total-amount-due" onkeyup="checkInputs()" readonly>
                 </div>
             </div>
-            <button onsubmit="getQuote()" type="submit">Get Quote</button>
-            <button type="submit">Submit Order</button>
+            <button id="quote-button" onsubmit="getQuote()" type="submit" disabled>Get Quote</button>
+            <button id="submit-button" type="submit" disabled>Submit Order</button>
         </form>
     </div>
     <script>
+        function checkInputs(){
+            if(document.forms[0]["gallons-requested"].value.length > 0 && document.forms[0]["delivery-date"].value.length > 0){
+                document.forms[0]["quote-button"].disabled = false;
+            }
+            else {
+                var inputs = document.forms[0].getElementsByTagName("input");
+                cansubmit = true;
+
+                for (var i = 0; i < f.length; i++) {
+                    if (f[i].value.length == 0) cansubmit = false;
+                }
+
+                if (cansubmit) {
+                    document.getElementById('submitbutton').disabled = false;
+                }
+            }
+        }
+
         function validateForm() {
             if (document.forms[0]["gallons-requested"].value == "" || document.forms[0]["delivery-date"].value == "") {
                 alert("Please fill out all fields.");

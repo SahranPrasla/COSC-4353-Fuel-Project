@@ -1,3 +1,5 @@
+var pg = require('pg');
+
 class Price {
   #current_ppg = 1.50;
   #company_profit = 0.10;
