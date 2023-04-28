@@ -1,5 +1,3 @@
-var pg = require('pg');
-
 class Price {
   #current_ppg = 1.50;
   #company_profit = 0.10;
@@ -27,3 +25,5 @@ class Price {
     return this.getSuggestedPPG() * this.#gallons_requested;
   }
 }
+
+module.exports = Price;

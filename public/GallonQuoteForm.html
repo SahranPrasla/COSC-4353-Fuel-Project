@@ -71,7 +71,6 @@
         }
 
         function getQuote(){
-            //console.log("Hello");
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", "/getquote", true);
             xhttp.setRequestHeader("Content-type", "application/json");
@@ -84,9 +83,7 @@
                     document.forms[0]["submit-button"].disabled = false;
                 }
             };
-            //console.log(document.forms[0]["gallons-requested"].value);
             xhttp.send(JSON.stringify({gallons: document.forms[0]["gallons-requested"].value, date: document.forms[0]["delivery-date"].value, username: document.forms[0]["username"].value}));
-            //xhttp.send(document.forms[0]["gallons-requested"].value);
         }
 
         function validateForm() {
@@ -100,7 +97,6 @@
             return true;
         }  
     </script>
-    <!--- <script src="./gallonQuoteFormServer.js"></script> -->
 </body>
 
 </html>
