@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path')
 var pg = require('pg');
-
 var conString = "postgres://brqwgzyf:1xJT2dMuCrI8dArQGhquZz4RGJjPdR9H@raja.db.elephantsql.com/brqwgzyf";
+
+const Price = require('./PriceModule.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,13 +19,10 @@ app.route('/signup')
   var { username, password} = req.body;
   // Do validation on the input data
   if (!username || !password ) {
-    console.log('success31'); //REMOVE
     res.status(400).send('All fields are required');
   } else if (password.length < 6) {
-    console.log('success2'); //REMOVE
     res.status(400).send('Password must be at least 6 characters long');
   } else {
-    console.log('success3'); //REMOVE
     const client = new pg.Client(conString)
     client.connect(function(err) {
       if(err) {
@@ -69,7 +67,14 @@ app.route('/saveProfile')
   }
 });
 
-
+app.get('/getquote', (req, res) => {
+  const gallonsRequested = req.query['gallons-requested']
+  const deliveryDate = req.query['delivery-date']
+  const username = req.query['username']
+  const PriceModule = new Price();
+  console.log('Request received to get quote for ' + gallonsRequested + ' gallons');
+  console.log('Delivery date: ' + deliveryDate);
+});
 
 // Start the server on port 1000
 const server = app.listen(5500, () => {
