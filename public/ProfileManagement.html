@@ -20,9 +20,9 @@
             </div>
           </div>
     </nav>
-
+    <!-- onsubmit="return submitProfileForm()" -->
     <div class="container">
-        <form class="main" method ="POST" action="/saveProfile">
+        <form class="main" method ="POST" onsubmit="submitProfileForm()" action= "/saveProfile">
             <div class="form">
                 <h2>Client Profile Management</h2>
                 <div class="info">
@@ -95,25 +95,29 @@
                         <option value="WY">Wyoming</option>
                     </select>
                     <br>
-
+                    <label for="username" hidden></label>
+                    <input type="text" id="username" name="username"  hidden>
                     <label for="zipcode" class="zipcode">Zipcode:</label>
                     <input type="text" id="zipcode" name="zipcode" minlength="5" maxlength="9" required>
                 </div>
-                <div class="saveProfile">
-                    <button type="button" onclick="submitProfileForm()">Save profile</button>
+                <div class="saveProfile1">
+                    <button type="sumbit">Save profile</button>
 
                 </div>
-                <div class="gallonForm">
+                <!-- <div class="gallonForm">
 
                     <a href="GallonQuoteForm.html"><input type="button" value='Gallon Form'></a>
-                </div>
+                </div> -->
             </div>
         </form>
     </div>
-    <script src="/__tests__/profileManagement.test.js"></script>
+    <!-- <script src="/profileManagementServer.js"></script> -->
+    <!-- <script src="/__tests__/profileManagement.test.js"></script> -->
 
     <script>
+      document.getElementById("username").value = localStorage.getItem("Username");
       function submitProfileForm() {
+
       var fullName = document.getElementById("fullName").value;
       var address1 = document.getElementById("address1").value;
       var address2 = document.getElementById("address2").value;
@@ -126,7 +130,7 @@
       // console.log("City: " + city);
       // console.log("State: " + state);
       // console.log("Zipcode: " + zipcode);
-      localStorage.setItem('Full name', fullName);
+      //localStorage.setItem('Full name', fullName);
       }
     </script>
 
