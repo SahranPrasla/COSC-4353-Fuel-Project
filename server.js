@@ -71,14 +71,93 @@ app.get('/getquote', (req, res) => {
   const gallonsRequested = req.query['gallons-requested']
   const deliveryDate = req.query['delivery-date']
   const username = req.query['username']
-  const PriceModule = new Price();
-  console.log('Request received to get quote for ' + gallonsRequested + ' gallons');
-  console.log('Delivery date: ' + deliveryDate);
+  var state;
+  var addy;
+  var orderCount;
+  var suggestedPPG;
+  var totalPrice; 
+
+  const client = new pg.Client(conString)
+  
+  client.connect()
+  const promise1 = client.query("SELECT * FROM ClientInformation WHERE username = 'OilTycoon12'")
+  const promise2 = client.query("SELECT * FROM FuelQuotes WHERE username = 'username'")
+  console.log('promise1');
+
+  Promise.all([promise1, promise2])
+  .then(results => {
+    const addy = results[0].rows[0].addressone;
+    const state = results[0].rows[0].state;
+    const orderCount = results[1].rowCount;
+    const PriceModule = new Price(state, orderCount, gallonsRequested);
+    const suggestedPPG = PriceModule.getSuggestedPPG();
+    const totalPrice = PriceModule.getTotal();
+    const responseText = {
+      suggested : suggestedPPG,
+      address : addy,
+      total : totalPrice
+    }
+    //res.send(JSON.stringify(responseText));
+    res.json(responseText);
+    //res.redirect(path.join(__dirname+'/public/GallonQuoteForm.html')); 
+  })
+  .catch(error => {
+    console.error('Error running queries', error);
+    res.status(500).send('Error running queries');
+  })
+  .finally(() => {
+    client.end();
+  });
+
+});
+
+app.get('/gethistory', (req, res) => {
+  var gallonsRequested;
+  var orderNumber;
+  var suggestedPPG;
+  var totalPrice; 
+
+  const client = new pg.Client(conString)
+  
+  client.connect()
+  client.query("SELECT ordernumber, gallons, price, suggestedppg FROM FuelQuotes WHERE username = 'username' ORDER BY orderNumber ASC") // FIX username
+  .then(results => {
+    const responseText = {
+      rows : results.rows,
+      rowCount : results.rowCount
+    }
+    res.json(responseText);
+  })
+});
+
+app.route('/login')
+.get((req,res) => {
+  res.status(200).sendFile(path.join(__dirname+'/public/loginPage.html'));
+})
+
+.post(async(req, res) => {
+  const {username, password } = req.body;
+  if (username === "invalidusername" ) {
+    res.status(401).sendFile(path.join(__dirname+'/public/loginPage.html'));
+  }
+  const client = new pg.Client(conString)
+  client.connect(function(err) {
+    client.query("SELECT * FROM UserCredentials WHERE username ='"+username+"' AND password = crypt('"+password+"', password);", function(err, result) {
+      if (result.rowCount == 1) {
+        res.status(200).sendFile(path.join(__dirname+'/public/GallonQuoteForm.html'));
+      }
+      else {
+        res.status(401).sendFile(path.join(__dirname+'/public/loginPage.html'));
+      }
+      client.end();
+    });
+  });
 });
 
 // Start the server on port 1000
 const server = app.listen(5500, () => {
   console.log('Server started on port 5500');
 });
+
 
 module.exports = server;

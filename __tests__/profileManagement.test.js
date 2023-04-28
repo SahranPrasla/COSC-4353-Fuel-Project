@@ -1,7 +1,13 @@
 const request = require('supertest');
 const app = require('../profileManagementServer.js');
 
-
+describe('Profile get request', () => {
+  it('should open page to profileManagement.html', async () => {
+    const res = await request(app)
+      .get('/saveProfile')
+    expect(res.statusCode).toEqual(200);
+  });
+  });
 
 describe('Profile Management', () => {
   it('returns 200 when given correct credentials', async () => {

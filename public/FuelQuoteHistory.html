@@ -18,6 +18,9 @@
         </ul>
     </nav>
 
+    <label for="username" hidden></label>
+    <input type="text" id="username" name="username"  hidden>
+
     <h2>Fuel Quote History</h2>
 
     <table class="invoice-history" border="1">
@@ -27,47 +30,54 @@
             <tr>
                 <th>Order Number</th>
                 <th>Gallons Requested</th>
-                <th>Delivery Address</th>
-                <th>Amount Spent</th>
-                <th>Profit</th>
+                <th>Price</th>
+                <th>Suggested PPG</th>
             </tr>
         </thead>
 
         <!-- Body -->
-        <tbody>
-            <tr>
-                <td> 1 </td>
-                <td> 10 </td>
-                <td> 123 Address Ln </td>
-                <td> $300 </td>
-                <td> $300 </td>
-            </tr>
-            <tr>
-                <td> 2 </td>
-                <td> 5 </td>
-                <td> 235 Address Rd </td>
-                <td> $700 </td>
-                <td> $700 </td>
-            </tr>
-            <tr>
-                <td> 3 </td>
-                <td> 9 </td>
-                <td> 923 Address Dr </td>
-                <td> $1100 </td>
-                <td> $1100 </td>
-            </tr>
+        <tbody id="data">
+    
         </tbody>
-
-        <!-- Foot -->
-        <tfoot>
-            <td colspan="5"> Total Profits: </td>
-        </tfoot>
-
     </table>
     </div>
     <!-- -->
 
+    <script>
+        document.getElementById("username").value = localStorage.getItem("Username");
+        window.onload = function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "/gethistory", true);
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                tbody = document.getElementById("data");
+                for(var i = 0; i < data.rowCount; i++) {
+                    var row = document.createElement("tr");
+                    var ordernumber = document.createElement("td");
+                    var gallonsrequested = document.createElement("td");
+                    var price = document.createElement("td");
+                    var suggestedppg = document.createElement("td");
+                    ordernumber.innerText = data.rows[i].ordernumber;
+                    gallonsrequested.innerText = data.rows[i].gallons;
+                    price.innerText = data.rows[i].price;
+                    suggestedppg.innerText = data.rows[i].suggestedppg;
+                    row.appendChild(ordernumber);
+                    row.appendChild(gallonsrequested);
+                    row.appendChild(price);
+                    row.appendChild(suggestedppg);
+                    tbody.appendChild(row);
+                }
+                console.log(data.rows[0].ordernumber);
+                console.log(data.rowCount);
+                
+            }
+        };
+        xhttp.send();
 
+    };
+
+    </script>
 
 
 </body>

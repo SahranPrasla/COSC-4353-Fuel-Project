@@ -46,7 +46,7 @@
                 </div>
             </div>
             <label for="username" hidden></label>
-            <input type="text" id="username" name="username"  hidden>
+            <input type="text" id="username" name="username" hidden>
             <button id="quote-button" onsubmit="getQuote()" type="submit" formmethod="GET" formaction="/getquote" disabled>Get Quote</button>
             <button id="submit-button" onsubmit="validateForm()" type="submit" formmethod="POST" formaction="/quote" disabled>Submit Order</button>
         </form>
@@ -60,8 +60,8 @@
                 var inputs = document.forms[0].getElementsByTagName("input");
                 cansubmit = true;
 
-                for (var i = 0; i < f.length; i++) {
-                    if (f[i].value.length == 0) cansubmit = false;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value.length == 0) cansubmit = false;
                 }
 
                 if (cansubmit) {
@@ -73,10 +73,14 @@
         function getQuote(){
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", "/getquote", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.onload = function() {
-                if (this.status === 200) {
+            gallons = document.forms[0]["gallons-requested"].value;
+            date = document.forms[0]["delivery-date"].value;
+            //xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.onreadystatechange = function() {
+                if (xhttp.status === 200 && xhttp.readyState === 4) {
                     var response = JSON.parse(this.responseText); 
+                    document.forms[0]["gallons-requested"].value = gallons;
+                    document.forms[0]["delivery-date"].value = date;
                     document.forms[0]["suggested-price"].value = response.suggestedPrice;
                     document.forms[0]["total-amount-due"].value = response.total;
                     document.forms[0]["delivery-address"].value = response.address;
@@ -84,6 +88,7 @@
                 }
             };
             xhttp.send(JSON.stringify({gallons: document.forms[0]["gallons-requested"].value, date: document.forms[0]["delivery-date"].value, username: document.forms[0]["username"].value}));
+            //xhttp.send();
         }
 
         function validateForm() {

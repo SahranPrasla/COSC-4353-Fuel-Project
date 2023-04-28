@@ -10,8 +10,9 @@ app.use(express.static('public'));
 // Route for handling sign up requests
 app.route('/signup')
 .get((req,res) => {
-  res.sendFile(path.join(__dirname+'/public/SignUp.html'));
+  res.status(200).sendFile(path.join(__dirname+'/public/SignUp.html'));
 })
+
 .post((req, res) => {
   var { username, password} = req.body;
   // Do validation on the input data
@@ -25,15 +26,9 @@ app.route('/signup')
     console.log('success3'); //REMOVE
     
     client.connect(function(err) {
-      if(err) {
-        return console.error('could not connect to postgres', err);
-      }
       client.query("INSERT INTO UserCredentials(username, password) VALUES('"+username+"', crypt('"+password+"', gen_salt('md5')));", function(err, result) {
-        if(err) {
-          return console.error('error running query', err);
-        }
         //console.log(result.rows);
-          client.end();
+        client.end();
       });
       
     });

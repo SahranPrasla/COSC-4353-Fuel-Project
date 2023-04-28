@@ -1,6 +1,14 @@
 const request = require('supertest');
 const app = require('../SignUpServer.js'); 
 
+describe('Sign Up get request', () => {
+  it('should open page to signup.html', async () => {
+    const res = await request(app)
+      .get('/signup')
+    expect(res.statusCode).toEqual(200);
+  });
+  });
+  
 describe('Sign Up', () => {
   it('should return an error if any required fields are missing', async () => {
     const res = await request(app)

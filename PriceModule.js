@@ -6,11 +6,16 @@ class Price {
   #gallons_req_factor;
   #gallons_requested;
 
-  constructor(location_factor, history_factor, gallons_req_factor, gallons_requested){
-    this.#location_factor = location_factor;
-    this.#history_factor = history_factor;
-    this.#gallons_req_factor = gallons_req_factor;
+  constructor(state, history_count, gallons_requested){
+    console.log(state);
+    this.#location_factor = state != 'TX' ? 0.04 : 0.02;
+    this.#history_factor = history_count > 0 ? 0.01 : 0.0;
+    this.#gallons_req_factor = gallons_requested > 1000 ? 0.02 : 0.03;
     this.#gallons_requested = gallons_requested;
+    console.log(this.#location_factor);
+    console.log(this.#history_factor);
+    console.log(this.#gallons_req_factor);
+    console.log(this.#gallons_requested);
   }
 
   getMargin() {
